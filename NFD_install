@@ -1,0 +1,23 @@
+sudo apt-get install build-essential pkg-config libboost-all-dev libsqlite3-dev libssl-dev libpcap-dev
+sudo apt-get install doxygen graphviz python-sphinx
+
+# Download ndn-cxx
+git clone https://github.com/named-data/ndn-cxx
+
+# Download NFD
+git clone --recursive https://github.com/named-data/NFD
+
+cd ndn-cxx
+./waf configure --with-examples
+./waf
+sudo ./waf install
+sudo ldconfig
+
+cd NFD
+./waf configure
+./waf
+sudo ./waf install
+sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
+
+nfd-start
+
