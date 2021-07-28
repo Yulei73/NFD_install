@@ -1,0 +1,29 @@
+nfdc face create remote ether://[08:00:27:01:01:01] local dev://eth2 persistency permanent
+nfdc face create udp://192.168.150.136
+nfdc route add /example/testApp udp://192.168.150.136
+./build/examples/consumer
+
+nfdc face create udp://192.168.150.135
+./build/examples/producer
+nfdc face list
+
+//123
+nfdc face create remote ether://[00:25:90:af:d8:91] local dev://enp7s0f0
+nfdc route add /test ether://[00:25:90:af:d8:91]
+nfdc route add /example ether://[00:25:90:af:d8:91]
+nfdc face create remote ether://[00:25:90:35:91:2c] local dev://enp7s0f1
+ndnping /test
+
+//107
+nfdc face create remote ether://[f8:0f:41:f6:d8:6a] local dev://enp5s0
+ndnpingserver /test
+
+//120
+nfdc face create remote ether://[f8:0f:41:f6:d8:6b] local dev://enp9s0
+nfdc route add /test ether://[f8:0f:41:f6:d8:6b]
+nfdc route add /example ether://[f8:0f:41:f6:d8:6b]
+
+​cd ndn-cxx
+​./build/examples/producer
+​cd ndn-cxx
+​./build/examples/consumer
